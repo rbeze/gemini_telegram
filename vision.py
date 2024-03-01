@@ -9,8 +9,7 @@ import env
 
 genai.configure(api_key=env.GOOGLE_API_KEY)
 
-# path='/home/jinx/Documentos/projects/gemini/image.jpg'
-img = Image.open(f'./img/photo.jpg')
+img = Image.open(telegram_img_path)
 # img.show()
 
 model = genai.GenerativeModel('gemini-pro-vision')
@@ -19,7 +18,7 @@ response = model.generate_content(img)
 
 response = model.generate_content(
         [
-            "Write a short, engaging blog post based on this picture.",
+            telegram_text,
             img
         ],
         stream=True
